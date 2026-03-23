@@ -100,7 +100,7 @@ export default {
   },
   methods: {
     initMap() {
-      this.map = L.map('map-container', { attributionControl: false }).setView([34.817, 113.538], 16);
+      this.map = L.map('map-container', { attributionControl: false }).setView([40.004, 116.358], 17);
       L.control.zoom({ position: 'bottomright' }).addTo(this.map);
       this.switchBaseMap('day'); // 默认日间模式
 

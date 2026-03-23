@@ -23,7 +23,7 @@
           <el-menu-item index="7"><i class="el-icon-truck"></i>校车/公交</el-menu-item>
           <el-menu-item index="11"><i class="el-icon-position"></i>失物招领发布</el-menu-item>
           <el-menu-item index="10"><i class="el-icon-chat-line-square"></i>提供建议</el-menu-item>
-          <el-menu-item index="9"><i class="el-icon-school"></i>学院官网</el-menu-item>
+          <el-menu-item index="9"><i class="el-icon-school"></i>学校官网</el-menu-item>
           <el-menu-item index="8"><i class="el-icon-s-custom"></i>管理员后台</el-menu-item>
         </el-menu>
       </div>
@@ -46,7 +46,7 @@
 
           <el-submenu index="theme-switch">
             <template slot="title"><i class="el-icon-brush"></i>界面风格切换</template>
-            <el-menu-item index="theme-default" @click="switchTheme('default')">🔴 农大绿 (默认)</el-menu-item>
+            <el-menu-item index="theme-default" @click="switchTheme('default')">🟢 农大绿 (默认)</el-menu-item>
             <el-menu-item index="theme-blue" @click="switchTheme('theme-blue')">🌌 科技蓝 (大屏)</el-menu-item>
             <el-menu-item index="theme-dark" @click="switchTheme('theme-dark')">🌑 深夜黑模式</el-menu-item>
           </el-submenu>
@@ -172,11 +172,10 @@
             为了加强校园安全管理，促进学校与社会各界开展交流与合作，满足社会公众到学校参访的需求，我校于即日起将社会公众（以下简称“参访人员”）预约进校参观纳入学校访客系统，预约办理方法如下：
           </p>
           <ol class="step-list">
-            <li>参访人员用手机扫描识别“参访人员预约二维码”，登记实名认证信息，注册为参访人员身份（为便于快速通行，建议上传本人近期免冠照片），然后以手机号为账号，以身份证后八位作为密码可登录中国农业大学访客预约平台（详见附件）。</li>
-            <li>点击〖访客自助预约进校〗，选择拟进校日期、拟参访校区，输入验证码，预约成功后系统会给本人手机发送一条短信。输入短信中的进校码（六位数字），即可生效完成预约。</li>
-            <li>请在预约日期的 <strong>7:30-19:30</strong> 进校，入校时在大门口扫入校码获取到进校通行码，向安保人员出示即可。</li>
-            <li>为了保证校园内的教学科研秩序，参访人员预约进校实行每日人数限额，满额后停止该日预约服务；在校园开放期间，如遇校内重大活动、极端天气，以及其他不宜开放的情况，将暂停校园参观。每位参访人员每个月最多只能预约 3 次。</li>
-            <li>参访人员入校仅限行人和自行车，<strong>机动车不得入校</strong>。</li>
+            <li>参访人员用手机扫描识别“参访人员预约二维码”，登记实名认证信息，或携带本人身份证件刷卡进入，详情可登录中国农业大学访客预约平台。</li>
+            <li>用手机扫描识别东南门门卫处外来人员入校登记二维码，选择拟进校日期、拟参访校区，填写个人基本信息，即可生效完成预约。</li>
+            <li>请在预约日期的 <strong>当天</strong> 进校，入校时在大门口扫入校码获取到进校通行码，向安保人员出示即可。</li>
+            <li>参访人员入校仅限行人和自行车，<strong>机动车入校需要扫描停车计时收费二维码</strong>。</li>
           </ol>
         </div>
         <span slot="footer" class="dialog-footer">
