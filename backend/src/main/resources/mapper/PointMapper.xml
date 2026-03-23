@@ -2,20 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.campus.vistorservice.dao.PointMapper">
     <resultMap id="PointResultMap" type="com.campus.vistorservice.model.PointModel">
-        <id column="gid" property="gid"/>
+        <id column="id" property="gid"/>
         <result column="name" property="name"/>
         <result column="geometry" property="geometry"/>
     </resultMap>
 
     <select id="selectPointByGid" resultMap="PointResultMap">
-        SELECT gid, name,
-               ST_AsGeoJSON(ST_GeomFromEWKB(decode(geom::text, 'hex'))) AS geometry
-        FROM cau_point WHERE gid = #{gid}
+        SELECT id, name,
+               ST_AsGeoJSON(geom) AS geometry
+        FROM cau_point WHERE id = #{gid}
     </select>
 
     <select id="selectAllPoints" resultMap="PointResultMap">
-        SELECT gid, name,
-               ST_AsGeoJSON(ST_GeomFromEWKB(decode(geom::text, 'hex'))) AS geometry
+        SELECT id, name,
+               ST_AsGeoJSON(geom) AS geometry
         FROM cau_point
     </select>
 </mapper>

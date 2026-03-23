@@ -2,26 +2,26 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.campus.vistorservice.dao.PolygonMapper">
     <resultMap id="PolygonResultMap" type="com.campus.vistorservice.model.PolygonModel">
-        <id column="gid" property="gid"/>
+        <id column="id" property="gid"/>
         <result column="name" property="name"/>
         <result column="geometry" property="geometry"/>
     </resultMap>
 
     <select id="selectPolygonByGid" resultMap="PolygonResultMap">
-        SELECT gid, name,
-               ST_AsGeoJSON(ST_Transform(ST_SetSRID(ST_GeomFromEWKB(decode(geom::text, 'hex')), 3857), 4326)) AS geometry
-        FROM cau_polygon WHERE gid = #{gid}
+        SELECT id, name,
+               ST_AsGeoJSON(geom) AS geometry
+        FROM cau_polygon WHERE id = #{gid}
     </select>
 
     <select id="selectAllPolygons" resultMap="PolygonResultMap">
-        SELECT gid, name,
-               ST_AsGeoJSON(ST_Transform(ST_SetSRID(ST_GeomFromEWKB(decode(geom::text, 'hex')), 3857), 4326)) AS geometry
+        SELECT id, name,
+               ST_AsGeoJSON(geom) AS geometry
         FROM cau_polygon
     </select>
 
     <select id="searchPolygonsByName" resultMap="PolygonResultMap">
-        SELECT gid, name,
-               ST_AsGeoJSON(ST_Transform(ST_SetSRID(ST_GeomFromEWKB(decode(geom::text, 'hex')), 3857), 4326)) AS geometry
+        SELECT id, name,
+               ST_AsGeoJSON(geom) AS geometry
         FROM cau_polygon WHERE name LIKE concat('%', #{name}, '%')
     </select>
 </mapper>
