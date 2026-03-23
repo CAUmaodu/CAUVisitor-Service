@@ -1,0 +1,215 @@
+id,osm_id,name,highway,waterway,aerialway,barrier,man_made,railway,z_order,other_tags
+"1","21691079",,primary,,,,,,"7","""oneway""=>""yes"""
+"2","26679376",学清路,tertiary,,,,,,"4","""cycleway:right""=>""lane"",""name:en""=>""Xueqing Road"",""name:fr""=>""Route Xuéqīng"",""name:zh""=>""学清路"",""name:zh-Hans""=>""学清路"",""name:zh-Hant""=>""學清路"",""name:zh-Latn-pinyin""=>""xuéqīng lù"",""oneway""=>""yes"""
+"3","29235323",京藏高速,motorway,,,,,,"9","""alt_name""=>""八达岭高速"",""alt_name:en""=>""Badaling Expressway"",""lanes""=>""3"",""name:en""=>""Beijing-Lasa Expwy"",""oneway""=>""yes"",""ref""=>""G6;G110"",""short_name""=>""京藏高速"",""surface""=>""asphalt"""
+"4","30784183",科荟桥,primary,,,,,,"27","""bridge""=>""yes"",""layer""=>""1"",""name:zh""=>""科荟桥"",""name:zh-Hans""=>""科荟桥"",""name:zh-Hant""=>""科薈橋"",""oneway""=>""yes"""
+"5","30784189",石板房南路,primary,,,,,,"7","""name:zh""=>""石板房南路"",""name:zh-Hans""=>""石板房南路"",""name:zh-Hant""=>""石板房南路"",""oneway""=>""yes"""
+"6","30784194",,primary,,,,,,"7","""oneway""=>""yes"""
+"7","42364506",,tertiary,,,,,,"4","""surface""=>""asphalt"""
+"8","48051223",G6辅路,primary,,,,,,"7","""name:zh""=>""G6辅路"",""name:zh-Hans""=>""G6辅路"",""name:zh-Hant""=>""G6輔路"",""oneway""=>""yes"",""ref""=>""S216"",""surface""=>""asphalt"""
+"9","55819998",科荟桥,primary,,,,,,"27","""bridge""=>""yes"",""layer""=>""1"",""name:zh""=>""科荟桥"",""name:zh-Hans""=>""科荟桥"",""name:zh-Hant""=>""科薈橋"",""oneway""=>""yes"""
+"10","55820091",,motorway_link,,,,,,"29","""bridge""=>""yes"",""layer""=>""1"",""oneway""=>""yes"",""surface""=>""asphalt"""
+"11","55820118",石板房南路,primary,,,,,,"7","""name:zh""=>""石板房南路"",""name:zh-Hans""=>""石板房南路"",""name:zh-Hant""=>""石板房南路"",""oneway""=>""yes"""
+"12","59452363",科荟路,tertiary,,,,,,"4","""cycleway""=>""track"",""lanes""=>""3"",""name:en""=>""KEHUI Rd"",""name:zh""=>""科荟路"",""name:zh-Hans""=>""科荟路"",""name:zh-Hant""=>""科薈路"",""oneway""=>""yes"""
+"13","59452364",,tertiary,,,,,,"4","""cycleway:right""=>""track"",""oneway""=>""yes"""
+"14","119617635",,residential,,,,,,"3",
+"15","121100408",学清路,primary,,,,,,"7","""name:en""=>""Xueqing Road"",""name:fr""=>""Route Xuéqīng"",""name:zh""=>""学清路"",""name:zh-Hans""=>""学清路"",""name:zh-Hant""=>""學清路"",""name:zh-Latn-pinyin""=>""xuéqīng lù"",""oneway""=>""yes"""
+"16","121100409",学院路,primary,,,,,,"7","""name:en""=>""Xueyuan Road"",""name:fr""=>""Route Xuéyuàn"",""name:zh""=>""学院路"",""name:zh-Hans""=>""学院路"",""name:zh-Hant""=>""學院路"",""name:zh-Latn-pinyin""=>""xuéyuàn lù"",""oneway""=>""yes"""
+"17","121399160",京藏高速,motorway,,,,,,"9","""alt_name""=>""八达岭高速"",""alt_name:en""=>""Badaling Expressway"",""lanes""=>""3"",""name:en""=>""Beijing-Lasa Expwy"",""oneway""=>""yes"",""ref""=>""G6;G110"",""short_name""=>""京藏高速"",""surface""=>""asphalt"",""toll""=>""no"""
+"18","121399191",石板房南路,primary,,,,,,"27","""bridge""=>""yes"",""layer""=>""1"",""name:zh""=>""石板房南路"",""name:zh-Hans""=>""石板房南路"",""name:zh-Hant""=>""石板房南路"",""oneway""=>""yes"""
+"19","121399192",石板房南路,primary,,,,,,"27","""bridge""=>""yes"",""layer""=>""1"",""name:zh""=>""石板房南路"",""name:zh-Hans""=>""石板房南路"",""name:zh-Hant""=>""石板房南路"",""oneway""=>""yes"""
+"20","121399195",石板房南路,primary,,,,,,"7","""name:zh""=>""石板房南路"",""name:zh-Hans""=>""石板房南路"",""name:zh-Hant""=>""石板房南路"",""oneway""=>""yes"""
+"188","1270645006",,primary_link,,,,,,"7","""oneway""=>""yes"""
+"21","121399196",石板房南路,primary,,,,,,"7","""name:zh""=>""石板房南路"",""name:zh-Hans""=>""石板房南路"",""name:zh-Hant""=>""石板房南路"",""oneway""=>""yes"""
+"22","121399199",林业大学北路,tertiary,,,,,,"4","""name:en""=>""Linyedaxuebei Road"",""oneway""=>""yes"""
+"23","121399338",,primary,,,,,,"7","""oneway""=>""yes"""
+"24","121399350",,tertiary_link,,,,,,"4","""oneway""=>""yes"""
+"25","121510220",清华东路,secondary,,,,,,"26","""bridge""=>""yes"",""layer""=>""1"",""oneway""=>""yes"",""surface""=>""asphalt"""
+"26","121510221",清华东路,secondary,,,,,,"6","""name:en""=>""Qinghua East Road"",""name:fr""=>""Route Est qīnghuá"",""name:zh""=>""清华东路"",""name:zh-Hans""=>""清华东路"",""name:zh-Hant""=>""清華東路"",""name:zh-Latn-pinyin""=>""qīnghuá dōng lù"",""oneway""=>""yes"""
+"27","121510222",林业大学北路,tertiary,,,,,,"4","""name:en""=>""Linyedaxuebei Road"",""oneway""=>""yes"""
+"28","121510223",林业大学北路,tertiary,,,,,,"4","""int_name""=>""Lin Ye Da Xue Bei Lu"",""name:en""=>""Linyedaxuebei Road"""
+"29","121510224",清华东路,secondary,,,,,,"6","""name:en""=>""Qinghua East Road"",""name:fr""=>""Route Est qīnghuá"",""name:zh""=>""清华东路"",""name:zh-Hans""=>""清华东路"",""name:zh-Hant""=>""清華東路"",""name:zh-Latn-pinyin""=>""qīnghuá dōng lù"",""oneway""=>""yes"",""surface""=>""asphalt"""
+"30","121510226",学清路,tertiary,,,,,,"4","""cycleway:right""=>""lane"",""name:en""=>""Xueqing Road"",""name:fr""=>""Route Xuéqīng"",""name:zh""=>""学清路"",""name:zh-Hans""=>""学清路"",""name:zh-Hant""=>""學清路"",""name:zh-Latn-pinyin""=>""xuéqīng lù"",""oneway""=>""yes"""
+"31","121510231",,cycleway,,,,,,"0","""oneway""=>""yes"""
+"32","121510244",,service,,,,,,"0",
+"33","121510251",,service,,,,,,"0",
+"34","121510252",,service,,,,,,"0",
+"35","121510258",,primary,,,,,,"7","""oneway""=>""yes"""
+"36","121510263",,steps,,,,,,"0",
+"37","121510269",,steps,,,,,,"0",
+"38","121510271",石清路,residential,,,,,,"3","""name:zh-hant""=>""石清路"""
+"39","121510276",,residential,,,,,,"3",
+"40","121510280",,cycleway,,,,,,"0","""oneway""=>""yes"""
+"41","121510281",,cycleway,,,,,,"0","""oneway""=>""yes"""
+"42","121510283",,cycleway,,,,,,"0","""oneway""=>""yes"""
+"43","121510284",小月河西路,tertiary,,,,,,"4","""name:zh""=>""小月河西路"",""name:zh-Hans""=>""小月河西路"",""name:zh-Hant""=>""小月河西路"",""surface""=>""asphalt"""
+"44","121511047",,primary_link,,,,,,"7","""oneway""=>""yes"""
+"45","144929507",学院路,primary,,,,,,"7","""name:en""=>""Xueyuan Road"",""name:fr""=>""Route Xuéyuàn"",""name:zh""=>""学院路"",""name:zh-Hans""=>""学院路"",""name:zh-Hant""=>""學院路"",""name:zh-Latn-pinyin""=>""xuéyuàn lù"",""oneway""=>""yes"""
+"46","145291220",清华东路,secondary,,,,,,"6","""name:en""=>""Qinghua East Road"",""name:fr""=>""Route Est qīnghuá"",""name:zh""=>""清华东路"",""name:zh-Hans""=>""清华东路"",""name:zh-Hant""=>""清華東路"",""name:zh-Latn-pinyin""=>""qīnghuá dōng lù"",""oneway""=>""yes"",""surface""=>""asphalt"""
+"189","1270645007",,primary_link,,,,,,"7","""oneway""=>""yes"""
+"47","145291234",清华东路,secondary,,,,,,"26","""bridge""=>""yes"",""layer""=>""1"",""oneway""=>""yes"",""surface""=>""asphalt"""
+"48","146451491",学院路,service,,,,,,"0","""name:en""=>""Xueyuan Road"",""name:fr""=>""Route Xuéyuàn"",""name:zh""=>""学院路"",""name:zh-Hans""=>""学院路"",""name:zh-Hant""=>""學院路"",""name:zh-Latn-pinyin""=>""xuéyuàn lù"",""oneway""=>""yes"""
+"49","146451492",学院路,service,,,,,,"0","""name:en""=>""Xueyuan Road"",""name:fr""=>""Route Xuéyuàn"",""name:zh""=>""学院路"",""name:zh-Hans""=>""学院路"",""name:zh-Hant""=>""學院路"",""name:zh-Latn-pinyin""=>""xuéyuàn lù"",""oneway""=>""yes"""
+"50","154079767",,living_street,,,,,,"0",
+"51","154079774",,living_street,,,,,,"0",
+"52","154079839",,service,,,,,,"0",
+"53","154079840",,service,,,,,,"0",
+"54","161289121",,tertiary_link,,,,,,"4","""oneway""=>""yes"""
+"55","161289848",清华东路,secondary,,,,,,"6","""name:en""=>""Qinghua East Road"",""name:fr""=>""Route Est qīnghuá"",""name:zh""=>""清华东路"",""name:zh-Hans""=>""清华东路"",""name:zh-Hant""=>""清華東路"",""name:zh-Latn-pinyin""=>""qīnghuá dōng lù"",""oneway""=>""yes"",""surface""=>""asphalt"""
+"56","161289855",,service,,,,,,"0","""oneway""=>""yes"""
+"57","161289857",,service,,,,,,"0",
+"58","161299747",清华东路,secondary,,,,,,"6","""name:en""=>""Qinghua East Road"",""name:fr""=>""Route Est qīnghuá"",""name:zh""=>""清华东路"",""name:zh-Hans""=>""清华东路"",""name:zh-Hant""=>""清華東路"",""name:zh-Latn-pinyin""=>""qīnghuá dōng lù"",""oneway""=>""yes"""
+"59","163826845",清华东路,secondary,,,,,,"6","""name:en""=>""Qinghua East Road"",""name:fr""=>""Route Est qīnghuá"",""name:zh""=>""清华东路"",""name:zh-Hans""=>""清华东路"",""name:zh-Hant""=>""清華東路"",""name:zh-Latn-pinyin""=>""qīnghuá dōng lù"",""oneway""=>""yes"",""surface""=>""asphalt"""
+"60","167161749",,service,,,,,,"0",
+"61","167162606",,service,,,,,,"0",
+"62","167162608",,service,,,,,,"0",
+"63","167162609",,service,,,,,,"0",
+"64","167162613",,service,,,,,,"0",
+"65","167162617",,service,,,,,,"0",
+"66","167162618",,service,,,,,,"0",
+"67","167163186",,service,,,,,,"0",
+"68","167163187",,service,,,,,,"0",
+"69","167170676",,service,,,,,,"0",
+"70","167171223",,service,,,,,,"0",
+"71","167171225",,service,,,,,,"0",
+"72","167303951",,service,,,,,,"0",
+"73","167303956",,service,,,,,,"0",
+"74","167351985",,service,,,,,,"0",
+"75","167351993",,service,,,,,,"0",
+"76","167351997",,service,,,,,,"0",
+"77","167351999",,service,,,,,,"0",
+"78","167352002",,service,,,,,,"0",
+"79","167352007",,service,,,,,,"0",
+"80","167352011",,service,,,,,,"0",
+"81","167352012",,service,,,,,,"0",
+"190","1270645008",,primary_link,,,,,,"7","""oneway""=>""yes"""
+"82","167352710",,service,,,,,,"0",
+"83","167352711",,service,,,,,,"0",
+"84","167352712",,service,,,,,,"0",
+"85","167353793",,service,,,,,,"0",
+"86","167354573",,service,,,,,,"0",
+"87","177353854",学清路,primary,,,,,,"7","""name:en""=>""Xueqing Road"",""name:fr""=>""Route Xuéqīng"",""name:zh""=>""学清路"",""name:zh-Hans""=>""学清路"",""name:zh-Hant""=>""學清路"",""name:zh-Latn-pinyin""=>""xuéqīng lù"",""oneway""=>""yes"""
+"88","187023157",,secondary_link,,,,,,"6",
+"89","187924796",,service,,,,,,"0",
+"90","187924797",,service,,,,,,"0",
+"91","187924800",,service,,,,,,"0",
+"92","188356147",,living_street,,,,,,"0",
+"93","235466187",清华东路,secondary,,,,,,"6","""name:en""=>""Qinghua East Road"",""name:fr""=>""Route Est qīnghuá"",""name:zh""=>""清华东路"",""name:zh-Hans""=>""清华东路"",""name:zh-Hant""=>""清華東路"",""name:zh-Latn-pinyin""=>""qīnghuá dōng lù"",""oneway""=>""yes"""
+"94","237622427",,tertiary,,,,,,"4","""oneway""=>""yes"""
+"95","242789375",,tertiary_link,,,,,,"4","""oneway""=>""yes"""
+"96","242789376",,motorway_link,,,,,,"9","""oneway""=>""yes"",""surface""=>""asphalt"""
+"97","255742450",,residential,,,,,,"3",
+"98","255742451",,residential,,,,,,"3",
+"99","366925100",,service,,,,,,"0",
+"100","368456516",,service,,,,,,"0",
+"101","478996510",,service,,,,,,"0","""covered""=>""yes"",""oneway""=>""yes"""
+"102","478996511",,service,,,,,,"0","""oneway""=>""yes"""
+"103","544281623",,service,,,,,,"0",
+"104","544521968",,service,,,,,,"0",
+"105","544521969",,service,,,,,,"0",
+"106","544521970",,service,,,,,,"0",
+"107","544521971",,living_street,,,,,,"0",
+"108","552083648",,residential,,,,,,"3",
+"109","594874227",,service,,,,,,"0","""maxspeed""=>""15"",""service""=>""alley"""
+"110","594874232",,service,,,,,,"0","""service""=>""alley"""
+"111","594874238",,service,,,,,,"0","""service""=>""alley"""
+"112","594874240",,service,,,,,,"0","""service""=>""alley"""
+"113","594912240",,service,,,,,,"0","""service""=>""alley"""
+"114","594912242",,service,,,,,,"0","""service""=>""alley"""
+"115","594912244",,service,,,,,,"0","""service""=>""alley"""
+"116","595098630",,service,,,,,,"0","""service""=>""alley"""
+"117","595098631",,service,,,,,,"0","""service""=>""alley"""
+"118","595098637",,service,,,,,,"0","""service""=>""alley"""
+"119","595098638",,service,,,,,,"0","""service""=>""alley"""
+"120","595098647",,service,,,,,,"0","""service""=>""alley"""
+"121","595098648",,service,,,,,,"0","""service""=>""alley"""
+"122","595098660",,service,,,,,,"0","""service""=>""alley"""
+"123","595108666",,service,,,,,,"0","""service""=>""alley"""
+"124","595115157",,living_street,,,,,,"0",
+"125","595115158",,living_street,,,,,,"0",
+"126","595115159",,living_street,,,,,,"0",
+"127","595115160",,living_street,,,,,,"0",
+"128","595116077",,living_street,,,,,,"0",
+"129","595116079",,living_street,,,,,,"0",
+"130","595116082",,living_street,,,,,,"0",
+"131","595116616",,service,,,,,,"0","""service""=>""alley"""
+"132","609201045",学清路,tertiary,,,,,,"4","""cycleway:right""=>""lane"",""name:en""=>""Xueqing Road"",""name:fr""=>""Route Xuéqīng"",""name:zh""=>""学清路"",""name:zh-Hans""=>""学清路"",""name:zh-Hant""=>""學清路"",""name:zh-Latn-pinyin""=>""xuéqīng lù"",""oneway""=>""yes"""
+"133","609201046",,service,,,,,,"0",
+"134","609201047",,residential,,,,,,"3",
+"135","609201049",,residential,,,,,,"3",
+"136","609201050",,service,,,,,,"0",
+"137","609201051",,cycleway,,,,,,"0","""oneway""=>""yes"""
+"138","609211223",,service,,,,,,"0",
+"139","609211224",,service,,,,,,"0",
+"140","609211225",,service,,,,,,"0",
+"141","609211231",,service,,,,,,"0",
+"142","609211232",,service,,,,,,"0",
+"143","609213507",,service,,,,,,"0",
+"144","609239437",,service,,,,,,"0",
+"145","818679647",G6辅路,primary,,,,,,"7","""name:zh""=>""G6辅路"",""name:zh-Hans""=>""G6辅路"",""name:zh-Hant""=>""G6輔路"",""oneway""=>""yes"",""ref""=>""S216"",""surface""=>""asphalt"""
+"146","854231908",,service,,,,,,"0","""service""=>""parking_aisle"""
+"147","854231909",,service,,,,,,"0","""service""=>""parking_aisle"""
+"148","854231912",,service,,,,,,"0","""service""=>""parking_aisle"""
+"149","854231913",,service,,,,,,"0","""oneway""=>""no"",""service""=>""parking_aisle"""
+"150","854231914",,service,,,,,,"0","""oneway""=>""no"""
+"151","854231919",,service,,,,,,"0",
+"152","854231921",,service,,,,,,"0",
+"153","857843395",清华东路,secondary,,,,,,"6","""name:en""=>""Qinghua East Road"",""name:fr""=>""Route Est qīnghuá"",""name:zh""=>""清华东路"",""name:zh-Latn-pinyin""=>""qīnghuá dōng lù"",""oneway""=>""yes"""
+"154","859946899",双泉堡西路,unclassified,,,,,,"3","""name:zh-Hant""=>""雙泉堡西路"""
+"155","930935493",,cycleway,,,,,,"20","""bicycle""=>""designated"",""bridge""=>""yes"",""foot""=>""designated"",""layer""=>""1"""
+"156","993241538",,motorway_link,,,,,,"9","""oneway""=>""yes"""
+"157","1006320925",学清路,cycleway,,,,,,"0","""name:en""=>""Xueqing Road"",""name:fr""=>""Route Xuéqīng"",""name:zh""=>""学清路"",""name:zh-Hans""=>""学清路"",""name:zh-Hant""=>""學清路"",""name:zh-Latn-pinyin""=>""xuéqīng lù"",""oneway""=>""yes"""
+"158","1006320927",学清路,service,,,,,,"0","""name:en""=>""Xueqing Road"",""name:fr""=>""Route Xuéqīng"",""name:zh""=>""学清路"",""name:zh-Hans""=>""学清路"",""name:zh-Hant""=>""學清路"",""name:zh-Latn-pinyin""=>""xuéqīng lù"",""oneway""=>""yes"""
+"159","1055460651",志新西路,tertiary,,,,,,"4",
+"160","1055460652",志新西路,tertiary,,,,,,"4",
+"161","1055573407",志新西路,tertiary,,,,,,"4","""name:zh""=>""志新西路"",""name:zh-Hans""=>""志新西路"",""name:zh-Hant""=>""志新西路"",""surface""=>""asphalt"""
+"162","1055573408",,service,,,,,,"0",
+"163","1055573409",志新西路,tertiary,,,,,,"4",
+"164","1057892332",,service,,,,,,"0",
+"165","1057892333",清华东路,secondary,,,,,,"6","""name:en""=>""Qinghua East Road"",""name:fr""=>""Route Est qīnghuá"",""name:zh""=>""清华东路"",""name:zh-Hans""=>""清华东路"",""name:zh-Hant""=>""清華東路"",""name:zh-Latn-pinyin""=>""qīnghuá dōng lù"",""oneway""=>""yes"""
+"166","1057892339",清华东路,secondary,,,,,,"6","""name:en""=>""Qinghua East Road"",""name:fr""=>""Route Est qīnghuá"",""name:zh""=>""清华东路"",""name:zh-Latn-pinyin""=>""qīnghuá dōng lù"",""oneway""=>""yes"""
+"167","1104710649",学清路,tertiary,,,,,,"4","""cycleway:right""=>""lane"",""name:en""=>""Xueqing Road"",""name:fr""=>""Route Xuéqīng"",""name:zh""=>""学清路"",""name:zh-Hans""=>""学清路"",""name:zh-Hant""=>""學清路"",""name:zh-Latn-pinyin""=>""xuéqīng lù"",""oneway""=>""yes"""
+"168","1104710650",学清路,primary,,,,,,"7","""name:en""=>""Xueqing Road"",""name:fr""=>""Route Xuéqīng"",""name:zh""=>""学清路"",""name:zh-Hans""=>""学清路"",""name:zh-Hant""=>""學清路"",""name:zh-Latn-pinyin""=>""xuéqīng lù"",""oneway""=>""yes"""
+"169","1104710651",,primary_link,,,,,,"7","""oneway""=>""yes"""
+"170","1104710652",学清路,cycleway,,,,,,"0","""name:en""=>""Xueqing Road"",""name:fr""=>""Route Xuéqīng"",""name:zh""=>""学清路"",""name:zh-Latn-pinyin""=>""xuéqīng lù"",""oneway""=>""yes"""
+"171","1104710653",学清路,primary,,,,,,"7","""name:en""=>""Xueqing Road"",""name:fr""=>""Route Xuéqīng"",""name:zh""=>""学清路"",""name:zh-Hans""=>""学清路"",""name:zh-Hant""=>""學清路"",""name:zh-Latn-pinyin""=>""xuéqīng lù"",""oneway""=>""yes"""
+"172","1104710654",石板房南路,primary,,,,,,"7","""name:zh""=>""石板房南路"",""name:zh-Hans""=>""石板房南路"",""name:zh-Hant""=>""石板房南路"",""oneway""=>""yes"""
+"173","1150631790",,residential,,,,,,"3",
+"174","1150631793",,service,,,,,,"0",
+"175","1150631794",,service,,,,,,"0",
+"176","1150631795",,service,,,,,,"0",
+"177","1150992485",,service,,,,,,"0","""service""=>""parking_aisle"""
+"178","1150992486",,service,,,,,,"0",
+"179","1150992487",,service,,,,,,"0","""service""=>""parking_aisle"""
+"180","1150992488",,service,,,,,,"0",
+"181","1176532492",学清路,primary,,,,,,"7","""name:en""=>""Xueqing Road"",""name:fr""=>""Route Xuéqīng"",""name:zh""=>""学清路"",""name:zh-Hans""=>""学清路"",""name:zh-Hant""=>""學清路"",""name:zh-Latn-pinyin""=>""xuéqīng lù"",""oneway""=>""yes"""
+"182","1183610700",,cycleway,,,,,,"20","""bridge""=>""yes"",""layer""=>""1"",""oneway""=>""yes"""
+"183","1270645000",学清路,tertiary,,,,,,"4","""cycleway:right""=>""lane"",""name:en""=>""Xueqing Road"",""name:fr""=>""Route Xuéqīng"",""name:zh""=>""学清路"",""name:zh-Hans""=>""学清路"",""name:zh-Hant""=>""學清路"",""name:zh-Latn-pinyin""=>""xuéqīng lù"",""oneway""=>""yes"""
+"184","1270645002",,cycleway,,,,,,"0","""oneway""=>""yes"""
+"185","1270645003",学清路,tertiary,,,,,,"4","""name:en""=>""Xueqing Road"",""name:fr""=>""Route Xuéqīng"",""name:zh""=>""学清路"",""name:zh-Hans""=>""学清路"",""name:zh-Hant""=>""學清路"",""name:zh-Latn-pinyin""=>""xuéqīng lù"",""oneway""=>""yes"""
+"186","1270645004",,cycleway,,,,,,"0","""oneway""=>""yes"""
+"187","1270645005",学清路,primary,,,,,,"7","""name:en""=>""Xueqing Road"",""name:fr""=>""Route Xuéqīng"",""name:zh""=>""学清路"",""name:zh-Hans""=>""学清路"",""name:zh-Hant""=>""學清路"",""name:zh-Latn-pinyin""=>""xuéqīng lù"",""oneway""=>""yes"""
+"191","1270646950",学清路,primary,,,,,,"7","""name:en""=>""Xueqing Road"",""name:fr""=>""Route Xuéqīng"",""name:zh""=>""学清路"",""name:zh-Hans""=>""学清路"",""name:zh-Hant""=>""學清路"",""name:zh-Latn-pinyin""=>""xuéqīng lù"",""oneway""=>""yes"""
+"192","1272530396",,tertiary,,,,,,"4","""cycleway:right""=>""track"",""oneway""=>""yes"""
+"193","1307978779",茗悦路,service,,,,,,"0","""construction""=>""tertiary"""
+"194","1307978780",小月河东畔路,tertiary,,,,,,"4","""name:zh-hant""=>""小月河東畔路"",""old_name""=>""小月河科技园西路"""
+"195","1307978791",东畔南街,tertiary,,,,,,"4","""name:zh-hant""=>""東畔南街"""
+"196","1307978792",东畔北街,tertiary,,,,,,"4","""name:zh-hant""=>""東畔北街"""
+"197","1349546997",,service,,,,,,"0",
+"198","1349546998",,service,,,,,,"0",
+"199","1383257628",G6辅路,primary,,,,,,"7","""name:zh""=>""G6辅路"",""name:zh-Hans""=>""G6辅路"",""name:zh-Hant""=>""G6輔路"",""oneway""=>""yes"",""ref""=>""S216"",""surface""=>""asphalt"""
+"200","1393223936",,residential,,,,,,"3",
+"201","1393223941",,residential,,,,,,"3",
+"202","1393226246",,service,,,,,,"-10","""layer""=>""-1"""
+"203","1393226247",,service,,,,,,"0",
+"204","1393830101",,living_street,,,,,,"0",
+"205","1393830113",,service,,,,,,"0",
+"206","1393834539",,service,,,,,,"0",
+"207","1393834541",,service,,,,,,"0",
+"208","1393834542",,service,,,,,,"0",
+"209","1393834544",,residential,,,,,,"3","""oneway""=>""yes"""
+"210","1393834553",,service,,,,,,"0",
+"211","1424432342",,service,,,,,,"0",
+"212","1424432343",,service,,,,,,"0",
+"213","1424432349",,service,,,,,,"0",
+"214","1470448321",小月河东畔路,construction,,,,,,"0","""name:zh-hant""=>""小月河東畔路"",""old_name""=>""小月河科技园西路"""
