@@ -3,17 +3,17 @@
 <mapper namespace="com.campus.vistorservice.dao.RouteMapper">
     <select id="findNearestNode" resultType="java.lang.Integer">
         SELECT id FROM cau_road
-        ORDER BY geom <-> ST_SetSRID(ST_MakePoint(#{lng}, #{lat}), 4326) LIMIT 1
+        ORDER BY geom &lt;-&gt; ST_SetSRID(ST_MakePoint(#{lng}, #{lat}), 4326) LIMIT 1
     </select>
 
     <select id="shortestPath" resultType="java.lang.String">
         WITH start_road AS (
             SELECT geom FROM cau_road
-            ORDER BY geom <-> ST_SetSRID(ST_MakePoint(#{startLng}, #{startLat}), 4326) LIMIT 1
+            ORDER BY geom &lt;-&gt; ST_SetSRID(ST_MakePoint(#{startLng}, #{startLat}), 4326) LIMIT 1
         ),
         end_road AS (
             SELECT geom FROM cau_road
-            ORDER BY geom <-> ST_SetSRID(ST_MakePoint(#{endLng}, #{endLat}), 4326) LIMIT 1
+            ORDER BY geom &lt;-&gt; ST_SetSRID(ST_MakePoint(#{endLng}, #{endLat}), 4326) LIMIT 1
         ),
         start_point AS (
             SELECT ST_ClosestPoint(ST_Union(start_road.geom), ST_SetSRID(ST_MakePoint(#{startLng}, #{startLat}), 4326)) AS geom
