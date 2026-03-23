@@ -10,18 +10,18 @@
     <select id="selectPolygonByGid" resultMap="PolygonResultMap">
         SELECT gid, name,
                ST_AsGeoJSON(ST_Transform(ST_SetSRID(ST_GeomFromEWKB(decode(geom::text, 'hex')), 3857), 4326)) AS geometry
-        FROM zzu_polygon WHERE gid = #{gid}
+        FROM cau_polygon WHERE gid = #{gid}
     </select>
 
     <select id="selectAllPolygons" resultMap="PolygonResultMap">
         SELECT gid, name,
                ST_AsGeoJSON(ST_Transform(ST_SetSRID(ST_GeomFromEWKB(decode(geom::text, 'hex')), 3857), 4326)) AS geometry
-        FROM zzu_polygon
+        FROM cau_polygon
     </select>
 
     <select id="searchPolygonsByName" resultMap="PolygonResultMap">
         SELECT gid, name,
                ST_AsGeoJSON(ST_Transform(ST_SetSRID(ST_GeomFromEWKB(decode(geom::text, 'hex')), 3857), 4326)) AS geometry
-        FROM zzu_polygon WHERE name LIKE concat('%', #{name}, '%')
+        FROM cau_polygon WHERE name LIKE concat('%', #{name}, '%')
     </select>
 </mapper>

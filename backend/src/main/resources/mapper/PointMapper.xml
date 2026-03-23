@@ -10,12 +10,12 @@
     <select id="selectPointByGid" resultMap="PointResultMap">
         SELECT gid, name,
                ST_AsGeoJSON(ST_GeomFromEWKB(decode(geom::text, 'hex'))) AS geometry
-        FROM zzu_point WHERE gid = #{gid}
+        FROM cau_point WHERE gid = #{gid}
     </select>
 
     <select id="selectAllPoints" resultMap="PointResultMap">
         SELECT gid, name,
                ST_AsGeoJSON(ST_GeomFromEWKB(decode(geom::text, 'hex'))) AS geometry
-        FROM zzu_point
+        FROM cau_point
     </select>
 </mapper>

@@ -15,7 +15,7 @@
 
     <div v-if="isTimeMachineActive" class="time-machine-panel">
       <div class="panel-header">
-        <span class="title">📷 郑大校园时光机 ({{ currentYear }})</span>
+        <span class="title">📷 农大校园时光机 ({{ currentYear }})</span>
         <el-button type="danger" size="mini" circle icon="el-icon-close" @click="exitTimeMachine" title="退出时光机"></el-button>
       </div>
       <div class="slider-container">
@@ -207,7 +207,7 @@ export default {
       Object.values(this.layerGroups).forEach(g => this.map.removeLayer(g));
 
       // 1. 左侧：历史图层 (保持不变，指向本地后端)
-      this.historyLayer = L.tileLayer(`http://localhost:8081/zzuvisitor/history_tiles/${this.currentYear}/{z}/{x}/{y}.png`, {
+      this.historyLayer = L.tileLayer(`http://localhost:8081/cauvisitor/history_tiles/${this.currentYear}/{z}/{x}/{y}.png`, {
         minZoom: 12, maxZoom: 18, tms: false
       }).addTo(this.map);
 
@@ -232,7 +232,7 @@ export default {
       if (this.historyLayer) this.map.removeLayer(this.historyLayer);
 
       // 🔥 核心修复：同样加上 http://localhost:8081
-      this.historyLayer = L.tileLayer(`http://localhost:8081/zzuvisitor/history_tiles/${this.currentYear}/{z}/{x}/{y}.png`, {
+      this.historyLayer = L.tileLayer(`http://localhost:8081/cauvisitor/history_tiles/${this.currentYear}/{z}/{x}/{y}.png`, {
         minZoom: 12, maxZoom: 18, tms: false
       }).addTo(this.map);
 

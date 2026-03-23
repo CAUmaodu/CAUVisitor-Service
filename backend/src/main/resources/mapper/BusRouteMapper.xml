@@ -4,6 +4,6 @@
     <select id="findAll" resultType="com.campus.vistorservice.model.BusRoute">
         SELECT id, name, stops, schedule,
                ST_AsGeoJSON(ST_Transform(geom, 4326)) as geometry
-        FROM zzu_gongjiao
+        FROM cau_gongjiao
     </select>
 </mapper>

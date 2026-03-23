@@ -1,8 +1,8 @@
 <template>
   <el-container class="app-wrapper" :class="currentTheme">
-    <el-header height="60px" class="zzu-header">
+    <el-header height="60px" class="cau-header">
       <div class="logo-area">
-        <span class="system-title">郑州大学游客服务系统</span>
+        <span class="system-title">中国农业大学东校区游客导览系统</span>
       </div>
 
       <div class="header-right">
@@ -46,7 +46,7 @@
 
           <el-submenu index="theme-switch">
             <template slot="title"><i class="el-icon-brush"></i>界面风格切换</template>
-            <el-menu-item index="theme-default" @click="switchTheme('default')">🔴 郑大红 (默认)</el-menu-item>
+            <el-menu-item index="theme-default" @click="switchTheme('default')">🔴 农大绿 (默认)</el-menu-item>
             <el-menu-item index="theme-blue" @click="switchTheme('theme-blue')">🌌 科技蓝 (大屏)</el-menu-item>
             <el-menu-item index="theme-dark" @click="switchTheme('theme-dark')">🌑 深夜黑模式</el-menu-item>
           </el-submenu>
@@ -113,7 +113,7 @@
         <div class="drawer-content">
           <div v-if="currentDrawer === 'notice'">
             <div class="link-box-small">
-              <a href="https://new.zzu.edu.cn/index/tzgg.htm" target="_blank" class="jump-link-small">
+              <a href="https://www.cau.edu.cn/" target="_blank" class="jump-link-small">
                 <i class="el-icon-link"></i> 更多公告详情请看
               </a>
             </div>
@@ -137,7 +137,7 @@
             <el-alert
                 title="实时查询提示"
                 type="warning"
-                description="具体公交运行情况请查询郑州大学通知，微信小程序 ‘享坐车’ 可以查询公交具体运行状况"
+                description="具体公交运行情况请查询中国农业大学通知，校内巴士在规定路线运行"
                 show-icon
                 :closable="false"
                 style="margin-bottom: 20px;">
@@ -164,7 +164,7 @@
       <el-dialog title="访客入校预约指南" :visible.sync="appointmentVisible" width="600px" center>
         <div class="appointment-content">
           <div class="link-box">
-            <a href="https://www5.zzu.edu.cn/bwc/info/1020/1760.htm" target="_blank" class="jump-link">
+            <a href="https://www.cau.edu.cn/" target="_blank" class="jump-link">
               <i class="el-icon-link"></i> 点击查询具体流程
             </a>
           </div>
@@ -172,7 +172,7 @@
             为了加强校园安全管理，促进学校与社会各界开展交流与合作，满足社会公众到学校参访的需求，我校于即日起将社会公众（以下简称“参访人员”）预约进校参观纳入学校访客系统，预约办理方法如下：
           </p>
           <ol class="step-list">
-            <li>参访人员用手机扫描识别“参访人员预约二维码”，登记实名认证信息，注册为参访人员身份（为便于快速通行，建议上传本人近期免冠照片），然后以手机号为账号，以身份证后八位作为密码可登录郑大访客预约平台（详见附件）。</li>
+            <li>参访人员用手机扫描识别“参访人员预约二维码”，登记实名认证信息，注册为参访人员身份（为便于快速通行，建议上传本人近期免冠照片），然后以手机号为账号，以身份证后八位作为密码可登录中国农业大学访客预约平台（详见附件）。</li>
             <li>点击〖访客自助预约进校〗，选择拟进校日期、拟参访校区，输入验证码，预约成功后系统会给本人手机发送一条短信。输入短信中的进校码（六位数字），即可生效完成预约。</li>
             <li>请在预约日期的 <strong>7:30-19:30</strong> 进校，入校时在大门口扫入校码获取到进校通行码，向安保人员出示即可。</li>
             <li>为了保证校园内的教学科研秩序，参访人员预约进校实行每日人数限额，满额后停止该日预约服务；在校园开放期间，如遇校内重大活动、极端天气，以及其他不宜开放的情况，将暂停校园参观。每位参访人员每个月最多只能预约 3 次。</li>
@@ -186,9 +186,9 @@
 
       <el-dialog title="关于本站" :visible.sync="collegeInfoVisible" width="500px" center>
         <div style="text-align: center; font-size: 16px; line-height: 2;">
-          <p>本webgis网站是由郑州大学地球科学与技术学院的<br><strong>很厉害的</strong>同学开发，感谢您的使用！</p>
+          <p>本webgis网站是由中国农业大学东校区的<br><strong>很厉害的</strong>同学开发，感谢您的使用！</p>
           <div class="link-box" style="margin-top: 20px;">
-            <a href="https://www7.zzu.edu.cn/geoscience/index.htm" target="_blank" class="jump-link"><i class="el-icon-s-promotion"></i> 地球科学与技术学院官网请点击</a>
+            <a href="https://www.cau.edu.cn/" target="_blank" class="jump-link"><i class="el-icon-s-promotion"></i> 中国农业大学官网请点击</a>
           </div>
         </div>
         <span slot="footer" class="dialog-footer"><el-button type="primary" @click="collegeInfoVisible = false">确 定</el-button></span>
@@ -368,13 +368,13 @@ export default {
   methods: {
     // 1. 获取天气
     fetchWeather() {
-      axios.get('https://wttr.in/Zhengzhou?format=j1&lang=zh-cn').then(res => {
+      axios.get('https://wttr.in/Beijing?format=j1&lang=zh-cn').then(res => {
         if (res.status === 200) {
           const data = res.data;
           let desc = data.current_condition[0].lang_zh ? data.current_condition[0].lang_zh[0].value : data.current_condition[0].weatherDesc[0].value;
-          this.weatherText = `郑州市: ${desc}, 温度: ${data.current_condition[0].temp_C}°C`;
+          this.weatherText = `北京市: ${desc}, 温度: ${data.current_condition[0].temp_C}°C`;
         }
-      }).catch(err => { console.error(err); this.weatherText = "郑州: 天气数据加载中..."; });
+      }).catch(err => { console.error(err); this.weatherText = "北京: 天气数据加载中..."; });
     },
 
     // 2. 顶部菜单处理
@@ -404,7 +404,7 @@ export default {
         this.topMenuActiveTextColor = '#ffd04b';
 
         this.changeBaseMap('day');
-        this.$message.success("已切换至：郑大红 (默认)");
+        this.$message.success("已切换至：农大绿 (默认)");
       }
       else if (theme === 'theme-blue') {
         // 1. 设置侧边栏 (科技蓝)
@@ -682,8 +682,8 @@ html, body {
 }
 
 /* 顶部导航栏 */
-.zzu-header {
-  background-color: #8B0000;
+.cau-header {
+  background-color: #2d5a27;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -868,13 +868,13 @@ html, body {
 /* --- 🔥 风格切换样式 --- */
 
 /* 1. 默认过渡动画 (让切换丝滑一点) */
-.zzu-header, .left-panel {
+.cau-header, .left-panel {
   transition: all 0.5s ease;
 }
 
 /* 2. 🌌 科技蓝主题 (theme-blue) */
 /* 当顶层容器有 class="theme-blue" 时生效 */
-.theme-blue .zzu-header {
+.theme-blue .cau-header {
   background: linear-gradient(90deg, #0f1c3a 0%, #1e457a 100%) !important; /* 渐变蓝 */
   border-bottom: 2px solid #00e1ff; /* 荧光底边 */
   box-shadow: 0 2px 20px rgba(0, 225, 255, 0.2);
@@ -901,7 +901,7 @@ html, body {
 }
 
 /* 3. 🌑 暗黑模式 (theme-dark) */
-.theme-dark .zzu-header {
+.theme-dark .cau-header {
   background-color: #1f1f1f !important;
   border-bottom: 1px solid #333;
 }

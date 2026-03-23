@@ -3,7 +3,7 @@ server:
 
   port: 8081
   servlet:                  # 🔥 新增这一行
-    context-path: /zzuvisitor # 🔥 新增这一行
+    context-path: /cauvisitor # 🔥 新增这一行
 
 
 

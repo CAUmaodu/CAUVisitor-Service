@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-// 🔥 核心修复：添加 /zzuvisitor 前缀，与你的项目风格保持一致
+// 核心修复：添加 /cauvisitor 前缀，与你的项目风格保持一致
 @RequestMapping("/bus")
 public class BusRouteController {
 

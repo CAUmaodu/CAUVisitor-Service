@@ -4,7 +4,7 @@ services:
   # --- 服务1：PostGIS 数据库 ---
   db:
     image: pgrouting/pgrouting:16-3.5-3.6
-    container_name: zzu_db
+    container_name: cau_db
     restart: always
     environment:
       POSTGRES_USER: postgres
@@ -20,7 +20,7 @@ services:
   # --- 服务2：Java 后端 ---
   backend:
     build: ./backend
-    container_name: zzu_backend
+    container_name: cau_backend
     restart: always
     ports:
       - "8081:8081"
@@ -35,7 +35,7 @@ services:
   # --- 服务3：Vue 前端 (Nginx) ---
   frontend:
     build: ./frontend
-    container_name: zzu_frontend
+    container_name: cau_frontend
     restart: always
     ports:
       - "80:80"

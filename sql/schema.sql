@@ -9,12 +9,12 @@ CREATE EXTENSION IF NOT EXISTS pgrouting;
 -- ==========================================
 DROP TABLE IF EXISTS public.sys_suggestion CASCADE;
 DROP TABLE IF EXISTS public.sys_lost_found CASCADE;
-DROP TABLE IF EXISTS public.zzu_gongjiao CASCADE;
-DROP TABLE IF EXISTS public.zzu_point CASCADE;
-DROP TABLE IF EXISTS public.zzu_polygon CASCADE;
-DROP TABLE IF EXISTS public.zzu_road CASCADE;
-DROP TABLE IF EXISTS public.zzu_road_noded CASCADE;
-DROP TABLE IF EXISTS public.zzu_road_noded_vertices_pgr CASCADE;
+DROP TABLE IF EXISTS public.cau_gongjiao CASCADE;
+DROP TABLE IF EXISTS public.cau_point CASCADE;
+DROP TABLE IF EXISTS public.cau_polygon CASCADE;
+DROP TABLE IF EXISTS public.cau_road CASCADE;
+DROP TABLE IF EXISTS public.cau_road_noded CASCADE;
+DROP TABLE IF EXISTS public.cau_road_noded_vertices_pgr CASCADE;
 
 -- ==========================================
 -- 3. 创建业务表：建议反馈 (sys_suggestion)
@@ -53,88 +53,88 @@ CREATE TABLE public.sys_lost_found (
 CREATE INDEX sys_lost_found_geom_idx ON public.sys_lost_found USING gist (geom);
 
 -- ==========================================
--- 5. GIS表：公交路线 (zzu_gongjiao)
+-- 5. GIS表：公交路线 (cau_gongjiao)
 -- ==========================================
-CREATE TABLE public.zzu_gongjiao (
+CREATE TABLE public.cau_gongjiao (
                                      id bigint NOT NULL,
                                      geom geometry(MultiLineString, 3857),
                                      name character varying(80),
                                      stops character varying(254),
                                      schedule character varying(100),
-                                     CONSTRAINT zzu_gongjiao_pkey PRIMARY KEY (id)
+                                     CONSTRAINT cau_gongjiao_pkey PRIMARY KEY (id)
 );
-CREATE INDEX sidx_zzu_gongjiao_geom ON public.zzu_gongjiao USING gist (geom);
+CREATE INDEX sidx_cau_gongjiao_geom ON public.cau_gongjiao USING gist (geom);
 
 -- ==========================================
--- 6. GIS表：兴趣点 (zzu_point)
+-- 6. GIS表：兴趣点 (cau_point)
 -- ==========================================
-DROP SEQUENCE IF EXISTS zzu_point_gid_seq;
-CREATE SEQUENCE zzu_point_gid_seq;
+DROP SEQUENCE IF EXISTS cau_point_gid_seq;
+CREATE SEQUENCE cau_point_gid_seq;
 
-CREATE TABLE public.zzu_point (
-                                  gid integer NOT NULL DEFAULT nextval('zzu_point_gid_seq'),
+CREATE TABLE public.cau_point (
+                                  gid integer NOT NULL DEFAULT nextval('cau_point_gid_seq'),
                                   fid numeric,
                                   name character varying(20),
                                   geom geometry(Point, 4326), -- 注意：这里是经纬度
-                                  CONSTRAINT zzu_point_pkey PRIMARY KEY (gid)
+                                  CONSTRAINT cau_point_pkey PRIMARY KEY (gid)
 );
-CREATE INDEX zzu_point_geom_idx ON public.zzu_point USING gist (geom);
+CREATE INDEX cau_point_geom_idx ON public.cau_point USING gist (geom);
 
 -- ==========================================
--- 7. GIS表：建筑物/区域 (zzu_polygon)
+-- 7. GIS表：建筑物/区域 (cau_polygon)
 -- ==========================================
-DROP SEQUENCE IF EXISTS zzu_polygon_gid_seq;
-CREATE SEQUENCE zzu_polygon_gid_seq;
+DROP SEQUENCE IF EXISTS cau_polygon_gid_seq;
+CREATE SEQUENCE cau_polygon_gid_seq;
 
-CREATE TABLE public.zzu_polygon (
-                                    gid integer NOT NULL DEFAULT nextval('zzu_polygon_gid_seq'),
+CREATE TABLE public.cau_polygon (
+                                    gid integer NOT NULL DEFAULT nextval('cau_polygon_gid_seq'),
                                     fid numeric,
                                     dn numeric,
                                     name character varying(21),
                                     layer character varying(254),
                                     path character varying(254),
                                     geom geometry(MultiPolygon, 4326), -- 注意：这里是经纬度
-                                    CONSTRAINT zzu_polygon_pkey PRIMARY KEY (gid)
+                                    CONSTRAINT cau_polygon_pkey PRIMARY KEY (gid)
 );
-CREATE INDEX zzu_polygon_geom_idx ON public.zzu_polygon USING gist (geom);
+CREATE INDEX cau_polygon_geom_idx ON public.cau_polygon USING gist (geom);
 
 -- ==========================================
--- 8. GIS表：原始路网 (zzu_road)
+-- 8. GIS表：原始路网 (cau_road)
 -- ==========================================
-DROP SEQUENCE IF EXISTS zzu_road_gid_seq;
-CREATE SEQUENCE zzu_road_gid_seq;
+DROP SEQUENCE IF EXISTS cau_road_gid_seq;
+CREATE SEQUENCE cau_road_gid_seq;
 
-CREATE TABLE public.zzu_road (
-                                 gid integer NOT NULL DEFAULT nextval('zzu_road_gid_seq'),
+CREATE TABLE public.cau_road (
+                                 gid integer NOT NULL DEFAULT nextval('cau_road_gid_seq'),
                                  fid numeric,
                                  geom geometry(MultiLineString, 3857),
-                                 CONSTRAINT zzu_road_pkey PRIMARY KEY (gid)
+                                 CONSTRAINT cau_road_pkey PRIMARY KEY (gid)
 );
-CREATE INDEX zzu_road_geom_idx ON public.zzu_road USING gist (geom);
+CREATE INDEX cau_road_geom_idx ON public.cau_road USING gist (geom);
 
 -- ==========================================
--- 9. 核心表：路径规划拓扑路网 (zzu_road_noded)
+-- 9. 核心表：路径规划拓扑路网 (cau_road_noded)
 -- 🔥 这是路径规划的核心表，必须包含 source/target/length
 -- ==========================================
-DROP SEQUENCE IF EXISTS zzu_road_noded_id_seq;
-CREATE SEQUENCE zzu_road_noded_id_seq;
+DROP SEQUENCE IF EXISTS cau_road_noded_id_seq;
+CREATE SEQUENCE cau_road_noded_id_seq;
 
-CREATE TABLE public.zzu_road_noded (
-                                       id integer NOT NULL DEFAULT nextval('zzu_road_noded_id_seq'),
+CREATE TABLE public.cau_road_noded (
+                                       id integer NOT NULL DEFAULT nextval('cau_road_noded_id_seq'),
                                        geom geometry,
                                        source integer,
                                        target integer,
                                        length double precision,
-                                       CONSTRAINT zzu_road_noded_pkey PRIMARY KEY (id)
+                                       CONSTRAINT cau_road_noded_pkey PRIMARY KEY (id)
 );
-CREATE INDEX zzu_road_noded_geom_idx ON public.zzu_road_noded USING gist (geom);
+CREATE INDEX cau_road_noded_geom_idx ON public.cau_road_noded USING gist (geom);
 
 -- ==========================================
--- 10. 核心表：路径规划顶点 (zzu_road_noded_vertices_pgr)
+-- 10. 核心表：路径规划顶点 (cau_road_noded_vertices_pgr)
 -- ==========================================
-CREATE TABLE public.zzu_road_noded_vertices_pgr (
+CREATE TABLE public.cau_road_noded_vertices_pgr (
                                                     id bigint NOT NULL,
                                                     geom geometry,
-                                                    CONSTRAINT zzu_road_noded_vertices_pgr_pkey PRIMARY KEY (id)
+                                                    CONSTRAINT cau_road_noded_vertices_pgr_pkey PRIMARY KEY (id)
 );
-CREATE INDEX zzu_road_noded_vertices_pgr_geom_idx ON public.zzu_road_noded_vertices_pgr USING gist (geom);
+CREATE INDEX cau_road_noded_vertices_pgr_geom_idx ON public.cau_road_noded_vertices_pgr USING gist (geom);
