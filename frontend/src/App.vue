@@ -63,11 +63,11 @@
           </el-submenu>
 
           <el-submenu index="bus-route">
-            <template slot="title"><i class="el-icon-truck"></i>校车/公交线路</template>
+            <template slot="title"><i class="el-icon-truck"></i>公交线路</template>
             <el-menu-item-group>
-              <el-checkbox v-model="busLines.line1" class="layer-check" @change="toggleBus">一号环线 (红)</el-checkbox>
-              <el-checkbox v-model="busLines.line2" class="layer-check" @change="toggleBus">二号环线 (绿)</el-checkbox>
-              <el-checkbox v-model="busLines.houde" class="layer-check" @change="toggleBus">厚德区间 (蓝)</el-checkbox>
+              <el-checkbox v-model="busLines.line1" class="layer-check" @change="toggleBus">438路 (红)</el-checkbox>
+              <el-checkbox v-model="busLines.line2" class="layer-check" @change="toggleBus">625路 (绿)</el-checkbox>
+              <el-checkbox v-model="busLines.line3" class="layer-check" @change="toggleBus">466路 (蓝)</el-checkbox>
             </el-menu-item-group>
           </el-submenu>
 
@@ -137,24 +137,20 @@
             <el-alert
                 title="实时查询提示"
                 type="warning"
-                description="具体公交运行情况请查询中国农业大学通知，校内巴士在规定路线运行"
+                description="具体公交运行情况请查询中国农业大学通知"
                 show-icon
                 :closable="false"
                 style="margin-bottom: 20px;">
             </el-alert>
 
             <div class="bus-list">
-              <el-card shadow="hover" class="bus-card">
-                <div slot="header" class="clearfix"><span style="font-weight: bold; color: #ff0000;">🚌 一号环线（外环主干线）</span></div>
-                <div class="text item"><p><strong>途经站点：</strong>东门站→文科园毓秀路站→医科园仁和大道站→北门站→松园厚德站→菊园厚德站→本源体育场厚德站→荷园厚德站→柳园厚德站→南门站→工科园天健站→理科园天健站→图书馆</p><p><strong>运行时间：</strong>每日 7:20 — 21:00</p></div>
-              </el-card>
-              <el-card shadow="hover" class="bus-card">
-                <div slot="header" class="clearfix"><span style="font-weight: bold; color: #00aa00;">🚌 二号环线（内环生活线）</span></div>
-                <div class="text item"><p><strong>途经站点：</strong>东门站→文科园毓秀路站→中核毓秀路站→菊园厚德站→松园厚德站→西北门站→松园驿站→菊园餐厅站→荷园餐厅站→柳园驿站→荷园厚德站→中核培英路站→图书馆培英路站</p><p><strong>运行时间：</strong>每日 7:20 — 21:00</p></div>
-              </el-card>
-              <el-card shadow="hover" class="bus-card">
-                <div slot="header" class="clearfix"><span style="font-weight: bold; color: #0000ff;">🚌 厚德区间</span></div>
-                <div class="text item"><p><strong>途经站点：</strong>北门站→北体育馆区间→松园厚德大道站→菊园厚德大道站→本源体育场站→荷园厚德大道站→柳园厚德大道站→南门站</p><p><strong>运行时间：</strong>每日 7:20 — 21:00</p></div>
+              <el-card shadow="hover" class="bus-card" v-for="route in busRoutes" :key="route.id">
+                <div slot="header" class="clearfix"><span :style="{ fontWeight: 'bold', color: route.color }">🚌 {{ route.name }}</span></div>
+                <div class="text item">
+                  <p><strong>起点：</strong>{{ route.from }}</p>
+                  <p><strong>终点：</strong>{{ route.to }}</p>
+                  <p><strong>运行方向：</strong>{{ route.from }} → {{ route.to }}</p>
+                </div>
               </el-card>
             </div>
           </div>
@@ -287,6 +283,7 @@
 <script>
 import CampusMap from './components/CampusMap.vue';
 import announcementData from './data/announcements.js';
+import busRoutes from './data/busRoutes.js';
 import axios from 'axios';
 
 export default {
@@ -327,7 +324,7 @@ export default {
       busLines: {
         line1: false,
         line2: false,
-        houde: false
+        line3: false
       },
 
       // 建议相关
@@ -448,7 +445,7 @@ export default {
     openDrawer(title, type) { this.drawerTitle = title; this.currentDrawer = type; this.drawerVisible = true; },
     toggleLayer(layerName) { if (this.$refs.campusMap) this.$refs.campusMap.updateLayer(layerName, this.layers[layerName]); },
     changeBaseMap(type) { if (this.$refs.campusMap) this.$refs.campusMap.switchBaseMap(type); },
-    toggleBus() { const targets = []; if (this.busLines.line1) targets.push("一号"); if (this.busLines.line2) targets.push("二号"); if (this.busLines.houde) targets.push("厚德"); if (this.$refs.campusMap) this.$refs.campusMap.updateBusLayer(targets); },
+    toggleBus() { const targets = []; if (this.busLines.line1) targets.push(busRoutes[0].targetKey); if (this.busLines.line2) targets.push(busRoutes[1].targetKey); if (this.busLines.line3) targets.push(busRoutes[2].targetKey); if (this.$refs.campusMap) this.$refs.campusMap.updateBusLayer(targets); },
     resetMap() { if (this.$refs.campusMap) this.$refs.campusMap.resetMap(); else this.$message.info('地图已复位'); },
 
     // 7. 工具激活 (含时光机)

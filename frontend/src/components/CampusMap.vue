@@ -41,7 +41,9 @@
 <script>
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import 'leaflet-side-by-side'; // 引入卷帘插件
+import 'leaflet-side-by-side';
+import busRoutes from '../data/busRoutes.js';
+import poiCategories from '../data/poiCategories.js';
 
 // 修复 Leaflet 默认图标丢失问题
 delete L.Icon.Default.prototype._getIconUrl;
@@ -292,11 +294,10 @@ export default {
       L.geoJSON(this.allPointsData, {
         filter: (feature) => {
           const name = feature.properties.name || "";
-          if (type === 'canteen') return name.includes('餐厅') || name.includes('食堂');
-          if (type === 'toilet') return name.includes('厕所') || name.includes('卫生间');
-          if (type === 'scenery') return name.includes('湖') || name.includes('山') || name.includes('草坪');
-          if (type === 'building') return name.includes('楼') || name.includes('馆');
-          return false;
+          const tags = feature.properties.other_tags || "";
+          const category = poiCategories[type];
+          if (!category) return false;
+          return category.keywords.some(kw => name.includes(kw) || tags.includes(kw));
         },
         onEachFeature: (feature, layer) => { layer.bindPopup(`<strong>${feature.properties.name}</strong>`); }
       }).eachLayer((layer) => group.addLayer(layer));
@@ -309,14 +310,13 @@ export default {
         filter: (feature) => targets.some(target => (feature.properties.name || "").includes(target)),
         style: (feature) => {
           const name = feature.properties.name || "";
-          if (name.includes("一号")) return { color: "#ff0000", weight: 5, opacity: 0.8 };
-          if (name.includes("二号")) return { color: "#00aa00", weight: 5, opacity: 0.8 };
-          if (name.includes("厚德")) return { color: "#0000ff", weight: 5, opacity: 0.8 };
+          const route = busRoutes.find(r => name.includes(r.targetKey));
+          if (route) return { color: route.color, weight: 5, opacity: 0.8 };
           return { color: "orange", weight: 4 };
         },
         onEachFeature: (feature, layer) => {
           const p = feature.properties;
-          layer.bindPopup(`<div style="font-size:14px; width:260px;"><h3 style="margin:0 0 5px 0; color:#8B0000;">🚌 ${p.name}</h3><p><strong>运行时间：</strong><br>${p.schedule}</p><p><strong>途经站点：</strong><br>${p.stops}</p></div>`);
+          layer.bindPopup(`<div style="font-size:14px; width:260px;"><h3 style="margin:0 0 5px 0; color:#8B0000;">🚌 ${p.name}</h3></div>`);
         }
       }).eachLayer(layer => this.busLayerGroup.addLayer(layer));
     },
