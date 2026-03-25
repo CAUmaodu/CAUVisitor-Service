@@ -3,9 +3,18 @@
     <div id="map-container"></div>
 
     <div class="search-box" v-if="!isTimeMachineActive">
-      <el-input placeholder="请输入地点名称" v-model="searchKeyword" @keyup.enter.native="handleSearch" clearable>
-        <el-button slot="append" icon="el-icon-search" @click="handleSearch"></el-button>
-      </el-input>
+      <div class="search-input-row">
+        <el-input placeholder="请输入地点名称" v-model="searchKeyword" @keyup.enter.native="handleSearch" clearable>
+          <el-button slot="append" icon="el-icon-search" @click="handleSearch"></el-button>
+        </el-input>
+      </div>
+      <div class="quick-search-btns">
+        <el-button size="mini" type="primary" plain @click="quickSearch('老水塔')">老水塔</el-button>
+        <el-button size="mini" type="primary" plain @click="quickSearch('毛泽东雕像')">毛泽东雕像</el-button>
+        <el-button size="mini" type="primary" plain @click="quickSearch('图书馆')">图书馆</el-button>
+        <el-button size="mini" type="primary" plain @click="quickSearch('肯德基')">肯德基</el-button>
+        <el-button size="mini" type="primary" plain @click="quickSearch('东南门')">东南门</el-button>
+      </div>
     </div>
 
     <div v-if="currentTool === 'pick-location'" class="tip-box">
@@ -60,16 +69,15 @@ export default {
       searchLayer: null,
 
       allPointsData: null,
-      allBusData: null,
       lostFoundData: null,
 
       layerGroups: {
-        canteen: new L.LayerGroup(),
-        scenery: new L.LayerGroup(),
-        toilet: new L.LayerGroup(),
-        building: new L.LayerGroup()
+        laoshuita: new L.LayerGroup(),
+        maozhuxi: new L.LayerGroup(),
+        tushuguan: new L.LayerGroup(),
+        kendeji: new L.LayerGroup(),
+        dongnanmen: new L.LayerGroup()
       },
-      busLayerGroup: new L.LayerGroup(),
       lostFoundLayerGroup: new L.LayerGroup(),
 
       currentTool: null,
@@ -91,13 +99,12 @@ export default {
       sideBySideControl: null
     };
   },
-  mounted() {
-    this.initMap();
-    this.loadData();
-    this.loadBusData();
-    this.loadLostFoundData();
-    setTimeout(() => { if (this.map) this.map.invalidateSize(); }, 200);
-  },
+    mounted() {
+      this.initMap();
+      this.loadData();
+      this.loadLostFoundData();
+      setTimeout(() => { if (this.map) this.map.invalidateSize(); }, 200);
+    },
   methods: {
     initMap() {
       this.map = L.map('map-container', { attributionControl: false }).setView([40.004, 116.358], 17);
@@ -107,7 +114,6 @@ export default {
       this.map.on('click', this.handleMapClick);
       this.map.on('dblclick', this.finishMeasure);
 
-      this.busLayerGroup.addTo(this.map);
       this.lostFoundLayerGroup.addTo(this.map);
     },
 
@@ -115,12 +121,6 @@ export default {
     loadData() {
       this.$axios.get('/pointmodel/all').then(res => {
         this.allPointsData = this.convertGeoJSONToGCJ02(res.data);
-        this.updateLayer('building', true);
-      }).catch(e => console.error(e));
-    },
-    loadBusData() {
-      this.$axios.get('/bus/all').then(res => {
-        this.allBusData = this.convertGeoJSONToGCJ02(res.data);
       }).catch(e => console.error(e));
     },
     loadLostFoundData() {
@@ -202,7 +202,6 @@ export default {
 
       // 清理现有图层
       if (this.currentBaseLayer) this.map.removeLayer(this.currentBaseLayer);
-      this.map.removeLayer(this.busLayerGroup);
       this.map.removeLayer(this.lostFoundLayerGroup);
       Object.values(this.layerGroups).forEach(g => this.map.removeLayer(g));
 
@@ -250,7 +249,6 @@ export default {
       if (this.nowLayer) this.map.removeLayer(this.nowLayer);
 
       this.switchBaseMap('day');
-      this.busLayerGroup.addTo(this.map);
       this.lostFoundLayerGroup.addTo(this.map);
 
       this.$message.success("已退出时光机模式");
@@ -292,49 +290,51 @@ export default {
       L.geoJSON(this.allPointsData, {
         filter: (feature) => {
           const name = feature.properties.name || "";
-          if (type === 'canteen') return name.includes('餐厅') || name.includes('食堂');
-          if (type === 'toilet') return name.includes('厕所') || name.includes('卫生间');
-          if (type === 'scenery') return name.includes('湖') || name.includes('山') || name.includes('草坪');
-          if (type === 'building') return name.includes('楼') || name.includes('馆');
+          if (type === 'laoshuita') return name.includes('老水塔');
+          if (type === 'maozhuxi') return name.includes('毛泽东雕像');
+          if (type === 'tushuguan') return name.includes('图书馆');
+          if (type === 'kendeji') return name.includes('肯德基');
+          if (type === 'dongnanmen') return name.includes('东南门');
           return false;
         },
         onEachFeature: (feature, layer) => { layer.bindPopup(`<strong>${feature.properties.name}</strong>`); }
       }).eachLayer((layer) => group.addLayer(layer));
       this.map.addLayer(group);
     },
-    updateBusLayer(targets) {
-      this.busLayerGroup.clearLayers();
-      if (!this.allBusData || targets.length === 0) return;
-      L.geoJSON(this.allBusData, {
-        filter: (feature) => targets.some(target => (feature.properties.name || "").includes(target)),
-        style: (feature) => {
-          const name = feature.properties.name || "";
-          if (name.includes("一号")) return { color: "#ff0000", weight: 5, opacity: 0.8 };
-          if (name.includes("二号")) return { color: "#00aa00", weight: 5, opacity: 0.8 };
-          if (name.includes("厚德")) return { color: "#0000ff", weight: 5, opacity: 0.8 };
-          return { color: "orange", weight: 4 };
-        },
-        onEachFeature: (feature, layer) => {
-          const p = feature.properties;
-          layer.bindPopup(`<div style="font-size:14px; width:260px;"><h3 style="margin:0 0 5px 0; color:#8B0000;">🚌 ${p.name}</h3><p><strong>运行时间：</strong><br>${p.schedule}</p><p><strong>途经站点：</strong><br>${p.stops}</p></div>`);
-        }
-      }).eachLayer(layer => this.busLayerGroup.addLayer(layer));
-    },
     calculateRealRoute() {
       const p1_gcj = this.routeStart.getLatLng();
       const p2_gcj = this.routeEnd.getLatLng();
-      const p1_wgs = this.gcj02towgs84(p1_gcj.lng, p1_gcj.lat);
-      const p2_wgs = this.gcj02towgs84(p2_gcj.lng, p2_gcj.lat);
       const loading = this.$loading({ lock: true, text: '正在规划路线...', spinner: 'el-icon-loading', background: 'rgba(0, 0, 0, 0.7)' });
-      this.$axios.get('/route/plan', { params: { startLat: p1_wgs[1], startLng: p1_wgs[0], endLat: p2_wgs[1], endLng: p2_wgs[0] } }).then(res => {
+      
+      const amapKey = 'YOUR_AMAP_API_KEY';
+      const url = `https://restapi.amap.com/v3/direction/walking?origin=${p1_gcj.lng},${p1_gcj.lat}&destination=${p2_gcj.lng},${p2_gcj.lat}&key=${amapKey}`;
+      
+      fetch(url).then(res => res.json()).then(data => {
         loading.close();
-        if (!res.data || !res.data.geometry) { this.$message.warning("无法规划路径，请尝试选择离道路更近的点"); return; }
-        const convertedRoute = this.convertGeoJSONToGCJ02(res.data);
+        if (data.status !== '1' || !data.paths || data.paths.length === 0) {
+          this.$message.warning("无法规划路径，请检查API Key是否正确");
+          return;
+        }
+        const path = data.paths[0];
+        const steps = path.steps;
+        let allPoints = [];
+        steps.forEach(step => {
+          const polyline = step.polyline;
+          const points = polyline.split(';').map(p => {
+            const [lng, lat] = p.split(',').map(Number);
+            return [lng, lat];
+          });
+          allPoints = allPoints.concat(points);
+        });
         if (this.routeLayer) this.map.removeLayer(this.routeLayer);
-        this.routeLayer = L.geoJSON(convertedRoute, { style: {color: 'blue', weight: 6, opacity: 0.8} }).addTo(this.map);
+        this.routeLayer = L.polyline(allPoints, { color: 'blue', weight: 6, opacity: 0.8 }).addTo(this.map);
         this.map.fitBounds(this.routeLayer.getBounds(), {padding: [50, 50]});
-        this.$message.success("路径规划成功！");
-      }).catch(err => { loading.close(); console.error(err); this.$message.error("路径规划服务异常"); });
+        this.$message.success(`路径规划成功！全长约${path.distance}米，预计步行${path.duration}秒`);
+      }).catch(err => {
+        loading.close();
+        console.error(err);
+        this.$message.error("路径规划服务异常，请检查网络连接");
+      });
     },
     finishMeasure() {
       if (this.currentTool !== 'measure') return;
@@ -356,6 +356,10 @@ export default {
       this.currentTool = null;
       L.DomUtil.removeClass(this.map._container, 'crosshair-cursor-enabled');
       this.map.closePopup();
+    },
+    quickSearch(keyword) {
+      this.searchKeyword = keyword;
+      this.handleSearch();
     },
     handleSearch() {
       if (!this.searchKeyword) { this.$message.warning("请输入关键词"); return; }
@@ -435,7 +439,10 @@ export default {
 .container >>> .crosshair-cursor-enabled { cursor: crosshair; }
 .container { position: relative; width: 100%; height: 100vh; }
 #map-container { width: 100%; height: 100%; z-index: 1; background-color: #ddd; }
-.search-box { position: absolute; top: 20px; left: 50px; z-index: 2000; width: 300px; background: white; border-radius: 4px; box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1); }
+.search-box { position: absolute; top: 20px; left: 50px; z-index: 2000; width: 340px; background: white; border-radius: 4px; box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1); padding: 10px; }
+.search-input-row { margin-bottom: 8px; }
+.quick-search-btns { display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; }
+.quick-search-btns .el-button { flex: 1; min-width: 60px; max-width: 90px; }
 .tip-box { position: absolute; top: 80px; left: 50%; transform: translateX(-50%); z-index: 2000; background: rgba(255, 255, 255, 0.9); padding: 10px 20px; border-radius: 4px; box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1); font-size: 14px; color: #333; }
 .container >>> .night-tiles {
   filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%) grayscale(20%);

@@ -20,7 +20,6 @@
             @select="handleTopMenu">
           <el-menu-item index="1"><i class="el-icon-date"></i>入校预约</el-menu-item>
           <el-menu-item index="6"><i class="el-icon-bell"></i>公告查询</el-menu-item>
-          <el-menu-item index="7"><i class="el-icon-truck"></i>校车/公交</el-menu-item>
           <el-menu-item index="11"><i class="el-icon-position"></i>失物招领发布</el-menu-item>
           <el-menu-item index="10"><i class="el-icon-chat-line-square"></i>提供建议</el-menu-item>
           <el-menu-item index="9"><i class="el-icon-school"></i>学校官网</el-menu-item>
@@ -55,19 +54,11 @@
           <el-submenu index="poi">
             <template slot="title"><i class="el-icon-location"></i>兴趣点(POI)展示</template>
             <el-menu-item-group>
-              <el-checkbox v-model="layers.canteen" class="layer-check" @change="toggleLayer('canteen')">食堂/餐厅</el-checkbox>
-              <el-checkbox v-model="layers.scenery" class="layer-check" @change="toggleLayer('scenery')">景点(厚山等)</el-checkbox>
-              <el-checkbox v-model="layers.toilet" class="layer-check" @change="toggleLayer('toilet')">公共卫生间</el-checkbox>
-              <el-checkbox v-model="layers.building" class="layer-check" @change="toggleLayer('building')">教学楼</el-checkbox>
-            </el-menu-item-group>
-          </el-submenu>
-
-          <el-submenu index="bus-route">
-            <template slot="title"><i class="el-icon-truck"></i>校车/公交线路</template>
-            <el-menu-item-group>
-              <el-checkbox v-model="busLines.line1" class="layer-check" @change="toggleBus">一号环线 (红)</el-checkbox>
-              <el-checkbox v-model="busLines.line2" class="layer-check" @change="toggleBus">二号环线 (绿)</el-checkbox>
-              <el-checkbox v-model="busLines.houde" class="layer-check" @change="toggleBus">厚德区间 (蓝)</el-checkbox>
+              <el-checkbox v-model="layers.laoshuita" class="layer-check" @change="toggleLayer('laoshuita')">老水塔</el-checkbox>
+              <el-checkbox v-model="layers.maozhuxi" class="layer-check" @change="toggleLayer('maozhuxi')">毛泽东雕像</el-checkbox>
+              <el-checkbox v-model="layers.tushuguan" class="layer-check" @change="toggleLayer('tushuguan')">图书馆</el-checkbox>
+              <el-checkbox v-model="layers.kendeji" class="layer-check" @change="toggleLayer('kendeji')">肯德基</el-checkbox>
+              <el-checkbox v-model="layers.dongnanmen" class="layer-check" @change="toggleLayer('dongnanmen')">东南门</el-checkbox>
             </el-menu-item-group>
           </el-submenu>
 
@@ -133,31 +124,7 @@
             </el-collapse>
           </div>
 
-          <div v-if="currentDrawer === 'bus'">
-            <el-alert
-                title="实时查询提示"
-                type="warning"
-                description="具体公交运行情况请查询中国农业大学通知，校内巴士在规定路线运行"
-                show-icon
-                :closable="false"
-                style="margin-bottom: 20px;">
-            </el-alert>
 
-            <div class="bus-list">
-              <el-card shadow="hover" class="bus-card">
-                <div slot="header" class="clearfix"><span style="font-weight: bold; color: #ff0000;">🚌 一号环线（外环主干线）</span></div>
-                <div class="text item"><p><strong>途经站点：</strong>东门站→文科园毓秀路站→医科园仁和大道站→北门站→松园厚德站→菊园厚德站→本源体育场厚德站→荷园厚德站→柳园厚德站→南门站→工科园天健站→理科园天健站→图书馆</p><p><strong>运行时间：</strong>每日 7:20 — 21:00</p></div>
-              </el-card>
-              <el-card shadow="hover" class="bus-card">
-                <div slot="header" class="clearfix"><span style="font-weight: bold; color: #00aa00;">🚌 二号环线（内环生活线）</span></div>
-                <div class="text item"><p><strong>途经站点：</strong>东门站→文科园毓秀路站→中核毓秀路站→菊园厚德站→松园厚德站→西北门站→松园驿站→菊园餐厅站→荷园餐厅站→柳园驿站→荷园厚德站→中核培英路站→图书馆培英路站</p><p><strong>运行时间：</strong>每日 7:20 — 21:00</p></div>
-              </el-card>
-              <el-card shadow="hover" class="bus-card">
-                <div slot="header" class="clearfix"><span style="font-weight: bold; color: #0000ff;">🚌 厚德区间</span></div>
-                <div class="text item"><p><strong>途经站点：</strong>北门站→北体育馆区间→松园厚德大道站→菊园厚德大道站→本源体育场站→荷园厚德大道站→柳园厚德大道站→南门站</p><p><strong>运行时间：</strong>每日 7:20 — 21:00</p></div>
-              </el-card>
-            </div>
-          </div>
         </div>
       </el-drawer>
 
@@ -318,44 +285,11 @@ export default {
       announcementList: announcementData,
 
       layers: {
-        canteen: false,
-        scenery: false,
-        toilet: false,
-        building: true
-      },
-
-      busLines: {
-        line1: false,
-        line2: false,
-        houde: false
-      },
-
-      // 建议相关
-      suggestionVisible: false,
-      suggestionForm: {
-        visitorName: '',
-        content: ''
-      },
-
-      // 管理员相关
-      adminLoginVisible: false,
-      adminPanelVisible: false,
-      activeAdminTab: 'suggestion',
-      adminPassword: '',
-      isAdminLoggedIn: false,
-      suggestionList: [],
-      adminLostFoundList: [],
-
-      // 失物招领相关
-      lostFoundVisible: false,
-      lostFoundForm: {
-        itemName: '',
-        description: '',
-        contact: '',
-        lostType: 'lost',
-        visitorName: '',
-        longitude: null,
-        latitude: null
+        laoshuita: false,
+        maozhuxi: false,
+        tushuguan: false,
+        kendeji: false,
+        dongnanmen: false
       },
 
       weatherText: ''
@@ -380,7 +314,6 @@ export default {
     handleTopMenu(key) {
       if (key === '1') this.appointmentVisible = true;
       else if (key === '6') this.openDrawer('校园公告', 'notice');
-      else if (key === '7') this.openDrawer('公交/校车查询', 'bus');
       else if (key === '10') { this.suggestionForm = { visitorName: '', content: '' }; this.suggestionVisible = true; }
       else if (key === '9') this.collegeInfoVisible = true;
       else if (key === '8') { if (this.isAdminLoggedIn) this.openAdminPanel(); else { this.adminPassword = ''; this.adminLoginVisible = true; } }
@@ -448,7 +381,7 @@ export default {
     openDrawer(title, type) { this.drawerTitle = title; this.currentDrawer = type; this.drawerVisible = true; },
     toggleLayer(layerName) { if (this.$refs.campusMap) this.$refs.campusMap.updateLayer(layerName, this.layers[layerName]); },
     changeBaseMap(type) { if (this.$refs.campusMap) this.$refs.campusMap.switchBaseMap(type); },
-    toggleBus() { const targets = []; if (this.busLines.line1) targets.push("一号"); if (this.busLines.line2) targets.push("二号"); if (this.busLines.houde) targets.push("厚德"); if (this.$refs.campusMap) this.$refs.campusMap.updateBusLayer(targets); },
+
     resetMap() { if (this.$refs.campusMap) this.$refs.campusMap.resetMap(); else this.$message.info('地图已复位'); },
 
     // 7. 工具激活 (含时光机)
@@ -462,31 +395,6 @@ export default {
     }
   },
 
-    handleTopMenu(key) {
-      if (key === '1') {
-        this.appointmentVisible = true;
-      } else if (key === '6') {
-        this.openDrawer('校园公告', 'notice');
-      } else if (key === '7') {
-        this.openDrawer('公交/校车查询', 'bus');
-      } else if (key === '10') {
-        this.suggestionForm = { visitorName: '', content: '' };
-        this.suggestionVisible = true;
-      } else if (key === '9') {
-        this.collegeInfoVisible = true;
-      } else if (key === '8') {
-        if (this.isAdminLoggedIn) {
-          this.openAdminPanel();
-        } else {
-          this.adminPassword = '';
-          this.adminLoginVisible = true;
-        }
-      } else if (key === '11') {
-        // 开启失物招领发布模式
-        if (this.$refs.campusMap) {
-          this.$refs.campusMap.activateTool('pick-location');
-        }
-      }
     },
 
     onLocationPicked(coords) {
@@ -624,15 +532,6 @@ export default {
       } else {
         this.$message.info('地图已复位');
       }
-    },
-    toggleBus() {
-      const targets = [];
-      if (this.busLines.line1) targets.push("一号");
-      if (this.busLines.line2) targets.push("二号");
-      if (this.busLines.houde) targets.push("厚德");
-      if (this.$refs.campusMap) {
-        this.$refs.campusMap.updateBusLayer(targets);
-      }
     }
 };
 </script>
@@ -660,12 +559,6 @@ export default {
 .notice-body { padding: 0 5px; }
 .notice-meta { font-size: 12px; color: #888; margin-bottom: 8px; border-bottom: 1px dashed #eee; padding-bottom: 5px; }
 .notice-text { font-size: 13px; line-height: 1.6; white-space: pre-wrap; color: #333; }
-
-/* 公交卡片样式 */
-.bus-card { margin-bottom: 15px; }
-.bus-card .text { font-size: 13px; line-height: 1.6; }
-.bus-card p { margin: 5px 0; }
-
 
 /* 全局样式 */
 html, body {
@@ -849,18 +742,6 @@ html, body {
   line-height: 1.6;
   white-space: pre-wrap;
   color: #333;
-}
-
-/* 公交卡片样式 */
-.bus-card {
-  margin-bottom: 15px;
-}
-.bus-card .text {
-  font-size: 13px;
-  line-height: 1.6;
-}
-.bus-card p {
-  margin: 5px 0;
 }
 
 
